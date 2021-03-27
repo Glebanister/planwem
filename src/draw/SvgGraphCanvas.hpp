@@ -6,13 +6,15 @@
 #include "GraphCanvas.hpp"
 
 namespace planwem {
-class SvgGraphCanvas : GraphCanvas {
+class SvgGraphCanvas : public GraphCanvas {
   public:
-    SvgGraphCanvas(const std::filesystem::path &output);
+    SvgGraphCanvas(const std::filesystem::path& output);
 
-    void draw(const Circle&) override;
+    void draw(const shapes::Circle&) override;
 
-    void draw(const Segment&) override;
+    void draw(const shapes::Segment&) override;
+
+    shapes::Vec2 size() const noexcept override;
 
     ~SvgGraphCanvas();
 
