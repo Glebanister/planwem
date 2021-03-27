@@ -3,7 +3,12 @@
 #include "Vec2.hpp"
 
 namespace planwem {
-struct Segment {
+namespace shapes {
+
+class Segment {
+  public:
     const Vec2 a, b;
 };
+
+} // namespace shapes
 } // namespace planwem

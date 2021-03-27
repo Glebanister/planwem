@@ -5,6 +5,8 @@ add_executable(
     ${CMAKE_PROJECT_NAME}
     src/main.cpp
     src/draw/SvgGraphCanvas.cpp
+    src/draw/StdoutGraphCanvas.cpp
+    src/graph/SpringGraph.cpp
 )
 
 target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC include)
