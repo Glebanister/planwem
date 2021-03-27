@@ -6,7 +6,7 @@ namespace planwem {
 SvgGraphCanvas::SvgGraphCanvas(const std::filesystem::path& output)
     : outputPath(output), os(output.string()) {
     os << "<?xml version=\"1.0\" standalone=\"no\"?>"
-          "<svg width=\"512\" height=\"512\" style='background: blue' version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">";
+          "<svg width=\"512\" height=\"512\" style='background: white' version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">";
 }
 
 void SvgGraphCanvas::draw(const shapes::Circle& circle) {
