@@ -2,32 +2,44 @@
 #include "draw/SvgGraphCanvas.hpp"
 #include "graph/SpringGraph.hpp"
 
-#include <iostream>
-
 using namespace planwem;
 
 int main() {
-    SpringGraph graph{6, 1.0, 0.1};
-    StdoutGraphCanvas debug;
-    // graph.addEdge(0, 1);
-    graph.addEdge(0, 1);
-    graph.addEdge(1, 2);
-    graph.addEdge(2, 3);
-    graph.addEdge(3, 4);
-    graph.addEdge(4, 5);
-    graph.addEdge(5, 0);
-    graph.addEdge(3, 0);
+    SpringGraph graph{11, 0.2, 0.15};
 
-    graph.draw(debug);
+    graph.addEdges({
+        {0, 1},
+        {1, 2},
+        {0, 2},
+        {2, 3},
+        {3, 4},
+        {4, 5},
+        {5, 6},
+        {6, 7},
+        {7, 8},
+        {8, 9},
+        {9, 10},
+        {10, 0},
+        {10, 1},
+        {7, 2},
+        {5, 2},
+    });
 
-    std::cout << std::endl;
+    auto zeros = [](int x) {
+        int len = std::to_string(x).size();
+        std::string res = "";
+        for (int i = 0; i < 3 - len; ++i) {
+            res += '0';
+        }
+        return res;
+    };
 
-    for (int i = 0; i < 10; ++i) {
-        graph.tick(1.0);
-        graph.draw(debug);
+    for (int i = 0; i < 300; ++i) {
+        graph.tick(0.1);
+        SvgGraphCanvas canvas(std::filesystem::path("tmp/" + zeros(i + 1) + std::to_string(i + 1) + ".svg"));
+        graph.draw(canvas);
     }
 
-    SvgGraphCanvas canvas(std::filesystem::path("graph.svg"));
-
+    SvgGraphCanvas canvas(std::filesystem::path("tmp/graph.svg"));
     graph.draw(canvas);
 }

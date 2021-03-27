@@ -10,11 +10,19 @@ SvgGraphCanvas::SvgGraphCanvas(const std::filesystem::path& output)
 }
 
 void SvgGraphCanvas::draw(const shapes::Circle& circle) {
-    os << "<circle cx=\"" << static_cast<int>(circle.center.x) << "\" cy=\"" << static_cast<int>(circle.center.y) << "\" r=\"" << static_cast<int>(circle.r) << "\"/>";
+    os << "<circle"
+       << " cx=\"" << static_cast<int>(circle.center.x)
+       << "\" cy=\"" << static_cast<int>(circle.center.y)
+       << "\" r=\"" << static_cast<int>(circle.r) << "\"/>";
 }
 
 void SvgGraphCanvas::draw(const shapes::Segment& segment) {
-    os << "<line x1=\"" << static_cast<int>(segment.a.x) << "\" x2=\"" << static_cast<int>(segment.b.x) << "\" y1=\"" << static_cast<int>(segment.a.y) << "\" y2=\"" << static_cast<int>(segment.b.y) << "\"  stroke=\"black\" stroke-width=\"5\"/>";
+    os << "<line "
+       << "   x1=\"" << static_cast<int>(segment.a.x)
+       << "\" y1=\"" << static_cast<int>(segment.a.y)
+       << "\" x2=\"" << static_cast<int>(segment.b.x)
+       << "\" y2=\"" << static_cast<int>(segment.b.y)
+       << "\"  stroke=\"black\" stroke-width=\"3\"/>";
 }
 
 shapes::Vec2 SvgGraphCanvas::size() const noexcept {

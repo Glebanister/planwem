@@ -38,6 +38,12 @@ void SpringGraph::addEdge(node a, node b) {
     adj_.at(b).push_back(a);
 }
 
+void SpringGraph::addEdges(const std::vector<std::pair<node, node>> &list) {
+    for (const auto& [a, b] : list) {
+        addEdge(a, b);
+    }
+}
+
 void SpringGraph::tick(double delta) {
     using namespace shapes;
     std::deque<Vec2> newNodes = nodes_;
@@ -83,7 +89,7 @@ void SpringGraph::draw(GraphCanvas& canvas) {
         canvas.draw(
             Circle{
                 {v.x * canSize.x, v.y * canSize.y},
-                3.0});
+                10.0});
     }
 
     for (node v = 0; v < nodes_.size(); ++v) {

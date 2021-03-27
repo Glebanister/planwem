@@ -20,19 +20,23 @@ inline double abs(const Vec2& v) noexcept {
 }
 
 inline Vec2 operator+(const Vec2& a, const Vec2& b) {
-    return {a.x + b.x, a.y + b.y};
+    return {a.x + b.x,
+            a.y + b.y};
 }
 
 inline Vec2 operator-(const Vec2& a, const Vec2& b) {
-    return {a.x - b.x, a.y - b.y};
+    return {a.x - b.x,
+            a.y - b.y};
 }
 
 inline Vec2 operator*(const Vec2& a, double k) {
-    return {a.x * k, a.y * k};
+    return {a.x * k,
+            a.y * k};
 }
 
 inline Vec2 operator/(const Vec2& a, double k) {
-    return {a.x / k, a.y / k};
+    return {a.x / k,
+            a.y / k};
 }
 
 inline Vec2& operator+=(Vec2& a, const Vec2& b) {

@@ -19,6 +19,8 @@ class SpringGraph : public Drawable {
 
     void addEdge(node, node);
 
+    void addEdges(const std::vector<std::pair<node, node>>&);
+
     bool hasNode(node) const noexcept;
 
     void checkHasNode(node) const;
