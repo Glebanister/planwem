@@ -41,7 +41,7 @@ int main() {
     //     return res;
     // };
 
-    for (int i = 0; i < 300; ++i) {
+    for (int i = 0; i < 30000; ++i) {
         graph.tick(0.1);
         // SvgGraphCanvas canvas(std::filesystem::path("tmp/" + zeros(i + 1) + std::to_string(i + 1) + ".svg"));
         // graph.draw(canvas);

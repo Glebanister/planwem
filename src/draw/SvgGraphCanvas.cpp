@@ -1,3 +1,5 @@
+#include <stdexcept>
+
 #include "SvgGraphCanvas.hpp"
 #include "util/Util.hpp"
 
@@ -10,6 +12,7 @@ SvgGraphCanvas::SvgGraphCanvas(const std::filesystem::path& output)
 }
 
 void SvgGraphCanvas::draw(const shapes::Circle& circle) {
+    checkContinuing();
     os << "<circle"
        << " cx=\"" << static_cast<int>(circle.center.x)
        << "\" cy=\"" << static_cast<int>(circle.center.y)
@@ -17,6 +20,7 @@ void SvgGraphCanvas::draw(const shapes::Circle& circle) {
 }
 
 void SvgGraphCanvas::draw(const shapes::Segment& segment) {
+    checkContinuing();
     os << "<line "
        << "   x1=\"" << static_cast<int>(segment.a.x)
        << "\" y1=\"" << static_cast<int>(segment.a.y)
@@ -27,6 +31,20 @@ void SvgGraphCanvas::draw(const shapes::Segment& segment) {
 
 shapes::Vec2 SvgGraphCanvas::size() const noexcept {
     return {512, 512};
+}
+
+void SvgGraphCanvas::flush() noexcept {
+    continuing = false;
+}
+
+bool SvgGraphCanvas::isContinuing() const noexcept {
+    return continuing;
+}
+
+void SvgGraphCanvas::checkContinuing() const {
+    if (!isContinuing()) {
+        throw std::logic_error("SvgGraphCanvas is stopped");
+    }
 }
 
 SvgGraphCanvas::~SvgGraphCanvas() {

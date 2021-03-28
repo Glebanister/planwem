@@ -16,10 +16,17 @@ class SvgGraphCanvas : public GraphCanvas {
 
     shapes::Vec2 size() const noexcept override;
 
+    void flush() noexcept;
+
+    bool isContinuing() const noexcept;
+
+    void checkContinuing() const;
+
     ~SvgGraphCanvas();
 
   private:
     std::filesystem::path outputPath;
     std::ofstream os;
+    bool continuing = true;
 };
 } // namespace planwem
