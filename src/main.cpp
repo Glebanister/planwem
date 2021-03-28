@@ -5,9 +5,11 @@
 using namespace planwem;
 
 int main() {
-    SpringGraph graph{11, 0.2, 0.01};
+    const std::size_t K = 11;
 
-    graph.addEdges({
+    SpringGraph graph{K, 0.3, 0.0, 0.33};
+
+    graph.addSprings({
         {0, 1},
         {1, 2},
         {2, 3},
@@ -24,6 +26,12 @@ int main() {
         {5, 2},
     });
 
+    for (size_t i = 0; i < K; ++i) {
+        for (size_t j = i + 1; j < K; ++j) {
+            graph.addResist(i, j);
+        }
+    }
+
     // auto zeros = [](int x) {
     //     int len = std::to_string(x).size();
     //     std::string res = "";
@@ -39,6 +47,6 @@ int main() {
         // graph.draw(canvas);
     }
 
-    SvgGraphCanvas canvas(std::filesystem::path("graph.svg"));
+    SvgGraphCanvas canvas(std::filesystem::path("assets/graph.svg"));
     graph.draw(canvas);
 }
