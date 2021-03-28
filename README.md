@@ -21,6 +21,6 @@ There are no options for executable so far, so you can just type `./build/planwe
 
 ## Example
 
-Some example of `planwem` work for some small planar graph. Well, it's not perfect, but work is not finished yet!
+Some example of `planwem` work for some small planar graph. Well, it's not perfect, but work is not finished yet! Also, the lengths of the edges coincide, so that the system has come to equilibrium. Now I need to try to improve the convexity of the edges.
 
 ![example](assets/graph.svg "Example")
