@@ -27,6 +27,8 @@ void SpringSystem::addSpring(Spring s) {
     springs_.push_back(s);
     adj_[s.from].push_back(s.to);
     adj_[s.to].push_back(s.from);
+    springId_[s.from][s.to] = springs_.size() - 1;
+    springId_[s.to][s.from] = springs_.size() - 1;
 }
 
 void SpringSystem::tick(double delta) {
@@ -88,6 +90,17 @@ void SpringSystem::draw(GraphCanvas &canvas) {
         canvas.draw(Segment{{from.x * canSize.x, from.y * canSize.y},
                             {to.x * canSize.x, to.y * canSize.y}});
     }
+}
+
+bool SpringSystem::hasSpring(std::size_t from, std::size_t to) const noexcept {
+    if (!hasNode(from) || !hasNode(to)) {
+        return false;
+    }
+    auto springsFrom = springId_.find(from);
+    if (springsFrom == springId_.end()) {
+        return false;
+    }
+    return springsFrom->second.find(to) != springsFrom->second.end();
 }
 
 }  // namespace planwem

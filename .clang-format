@@ -3,4 +3,4 @@ IndentWidth: 4
 DerivePointerAlignment: false
 PointerAlignment: Right
 AlwaysBreakTemplateDeclarations: Yes
-ColumnLimit: 100
+ColumnLimit: 0

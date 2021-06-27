@@ -1,6 +1,6 @@
 #include "draw/StdoutGraphCanvas.hpp"
 #include "draw/SvgGraphCanvas.hpp"
-#include "graph/SpringSystem.hpp"
+#include "graph/CycledSpringSystem.hpp"
 
 using namespace planwem;
 
@@ -9,24 +9,13 @@ int main() {
     const double RIG = 0.1;
     const double L = 0.33;
 
-    SpringSystem graph{K};
+    CycledSpringSystem graph{K, RIG, L};
 
-    auto addSpring = [&](std::size_t from, std::size_t to) { graph.addSpring({from, to, RIG, L, true}); };
-
-    addSpring(0, 1);
-    addSpring(1, 2);
-    addSpring(2, 3);
-    addSpring(3, 4);
-    addSpring(4, 5);
-    addSpring(5, 6);
-    addSpring(6, 7);
-    addSpring(7, 8);
-    addSpring(8, 9);
-    addSpring(9, 10);
-    addSpring(10, 0);
-    addSpring(10, 1);
-    addSpring(7, 2);
-    addSpring(5, 2);
+    graph.addCycle({1, 2, 3, 4, 5});
+    graph.addCycle({4, 6, 5});
+    graph.addCycle({0, 7, 3, 2});
+    graph.addCycle({7, 8, 10, 0});
+    graph.addCycle({8, 9, 10});
 
      auto zeros = [](int x) {
          std::size_t len = std::to_string(x).size();
@@ -38,7 +27,7 @@ int main() {
      };
 
     for (int i = 0; i < 100; ++i) {
-        for (int j = 0; j < 20; ++j) {
+        for (int j = 0; j < 100; ++j) {
             graph.tick(0.02);
         }
          SvgGraphCanvas canvas(std::filesystem::path("tmp/" + zeros(i + 1) + std::to_string(i + 1)

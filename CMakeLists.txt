@@ -7,7 +7,7 @@ add_executable(
     src/draw/SvgGraphCanvas.cpp
     src/draw/StdoutGraphCanvas.cpp
     src/graph/SpringSystem.cpp
-)
+    src/graph/CycledSpringSystem.cpp)
 
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE src)
 
