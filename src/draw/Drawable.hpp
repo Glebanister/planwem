@@ -4,6 +4,6 @@
 
 namespace planwem {
 class Drawable {
-    virtual void draw(GraphCanvas&) = 0;
+    virtual void draw(GraphCanvas &) = 0;
 };
-} // namespace planwem
+}  // namespace planwem

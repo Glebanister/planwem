@@ -6,11 +6,13 @@ add_executable(
     src/main.cpp
     src/draw/SvgGraphCanvas.cpp
     src/draw/StdoutGraphCanvas.cpp
-    src/graph/SpringGraph.cpp
+    src/graph/SpringSystem.cpp
 )
 
-target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC include)
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE src)
+
+target_link_libraries(${CMAKE_PROJECT_NAME} m)
+target_link_libraries(${CMAKE_PROJECT_NAME} stdc++)
 
 set_property(
     TARGET ${CMAKE_PROJECT_NAME}

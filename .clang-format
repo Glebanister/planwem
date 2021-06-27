@@ -1,6 +1,6 @@
-BasedOnStyle: LLVM
+BasedOnStyle: Google
 IndentWidth: 4
 DerivePointerAlignment: false
-PointerAlignment: Left
+PointerAlignment: Right
 AlwaysBreakTemplateDeclarations: Yes
-ColumnLimit: 0
+ColumnLimit: 100

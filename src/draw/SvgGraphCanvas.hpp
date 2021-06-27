@@ -6,13 +6,14 @@
 #include "GraphCanvas.hpp"
 
 namespace planwem {
+
 class SvgGraphCanvas : public GraphCanvas {
-  public:
-    SvgGraphCanvas(const std::filesystem::path& output);
+   public:
+    explicit SvgGraphCanvas(const std::string &outputFilename);
 
-    void draw(const shapes::Circle&) override;
+    void draw(const shapes::Circle &) override;
 
-    void draw(const shapes::Segment&) override;
+    void draw(const shapes::Segment &) override;
 
     shapes::Vec2 size() const noexcept override;
 
@@ -24,9 +25,10 @@ class SvgGraphCanvas : public GraphCanvas {
 
     ~SvgGraphCanvas();
 
-  private:
+   private:
     std::filesystem::path outputPath;
     std::ofstream os;
     bool continuing = true;
 };
-} // namespace planwem
+
+}  // namespace planwem

@@ -4,11 +4,11 @@
 
 namespace planwem {
 class StdoutGraphCanvas : public GraphCanvas {
-  public:
-    void draw(const shapes::Circle&) override;
+   public:
+    void draw(const shapes::Circle &) override;
 
-    void draw(const shapes::Segment&) override;
+    void draw(const shapes::Segment &) override;
 
-    shapes::Vec2 size() const noexcept override;
+    [[nodiscard]] shapes::Vec2 size() const noexcept override;
 };
-} // namespace planwem
+}  // namespace planwem

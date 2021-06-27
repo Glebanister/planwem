@@ -2,14 +2,12 @@
 
 #include "Vec2.hpp"
 
-namespace planwem {
-namespace shapes {
+namespace planwem::shapes {
 
 class Circle {
-  public:
+   public:
     const Vec2 center;
     const double r;
 };
 
-} // namespace shapes
-} // namespace planwem
+}  // namespace planwem::shapes
